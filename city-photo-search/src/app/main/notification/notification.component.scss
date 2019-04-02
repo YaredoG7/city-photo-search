@@ -1,0 +1,43 @@
+#notification-content{
+
+    width: 300px;
+    height: 30px;
+    border: 2px #F96714 soild;
+    border-radius: 2px;
+    text-align: center;
+
+    .notification-message{
+        line-height: 1.5;
+        display: inline-block;
+        vertical-align: middle;
+     }
+
+    a {
+        padding: 7px;
+        float: right;
+        color: rgb(32, 30, 30);
+        font-weight: 900;
+        cursor: pointer;
+    }
+}
+
+.alert-danger{
+    background-color: rgb(248, 73, 73); 
+    color: white;
+}
+
+.alert-success{
+    background-color: rgb(58, 165, 58); 
+    color: white;
+}
+
+.alert-warning {
+    background-color: darkgoldenrod;
+    color: white;
+}
+
+.alert-info {
+    background-color: rgb(75, 79, 80);
+    color: white;
+}
+
