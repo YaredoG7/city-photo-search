@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { City} from '../model/cities.interface';
-import {Observable, throwError } from 'rxjs';
-import {HttpResponse, HttpErrorResponse} from '@angular/common/http';
+import {Observable } from 'rxjs';
 
 @Injectable()
 export class DatasourceService {

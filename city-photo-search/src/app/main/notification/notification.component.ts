@@ -25,7 +25,7 @@ export class NotificationComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     setTimeout(()=>{
       this.resetNotification(); 
-    }, 10000); 
+    }, 5000); 
   }
 
   cssClass(notification: INotify) {

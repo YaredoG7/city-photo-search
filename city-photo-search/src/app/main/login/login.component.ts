@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import {NotificationService } from '../../services/notification.service';
 
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   public username: string;
   public password: string;
 
-  constructor(private auth: AuthService, private notification: NotificationService) { }
+  constructor(private auth: AuthService, private router: Router, private notification: NotificationService) { }
 
   ngOnInit() {
   }
@@ -23,13 +24,15 @@ export class LoginComponent implements OnInit {
         .authenticate(this.username, this.password)
         .subscribe((resp) => {
           if (resp['success'] === true) {
-            this.successMessage('successful login')
+            this.router.navigateByUrl('/main');
+            this.successMessage('Successful login   😉')
+
           } else {
-           this.errorMessage('incorrect username or password');
+           this.errorMessage('Incorrect username or password   😕');
           }
         });
     } else {
-      this.errorMessage('please fill in the form correctly');
+      this.errorMessage('Please fill in the form correctly  🤒');
     }
   }
 

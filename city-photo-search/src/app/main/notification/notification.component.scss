@@ -1,15 +1,18 @@
 #notification-content{
 
-    width: 300px;
+    width: 100%;
     height: 30px;
     border: 2px #F96714 soild;
     border-radius: 2px;
     text-align: center;
+    padding: 10px;
+    
 
     .notification-message{
         line-height: 1.5;
         display: inline-block;
         vertical-align: middle;
+        
      }
 
     a {
