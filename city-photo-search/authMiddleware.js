@@ -10,15 +10,13 @@ module.exports = function(req, res, next) {
     if (req.url == "/login" && req.method == "POST"){
         if (req.body != null && req.body.username == USERNAME && req.body.password == PASSWORD){
             let token = jwt.sign({data: USERNAME}, APP_SECRET, {expiresIn: "1h"});
-            console.log(token);
             res.json({success: true, token: token});
         } else {
-            console.log(req.body.username, req.body.password )
             res.json({success: false});
         }
         res.end();
         return;
-    } else if (req.url.startsWith("/search") && req.method == "GET"){
+    } else if (req.url.startsWith("/search") && req.method == "POST"){
         let token = req.headers.authorization;
 
         if (token != null && token.startsWith("Bearer<")){

@@ -1,18 +1,31 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {LoginComponent} from './main/login/login.component';
+import { LoginComponent} from './main/login/login.component';
+import { SearchPageComponent} from './main/search-page/search-page.component';
+import { MainComponent} from './main/main.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     redirectTo: '/login',
     pathMatch: 'full'
-  }, 
+  },
   {
-    path: "login",
+    path: 'login',
     component: LoginComponent
 
-  }, 
+  },
+  {
+    path: 'main',
+    component: MainComponent,
+    children: [
+      {
+        path: 'search',
+        component: SearchPageComponent
+      }
+
+    ]
+  }
 ];
 
 @NgModule({
