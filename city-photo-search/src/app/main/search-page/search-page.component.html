@@ -1,16 +1,23 @@
-<div id='search'>
-
+<div id="search">
   <div class="input-filed">
-    <!-- <input type="text" placeholder="Search City..."> -->
-    <input type="text" list="cities" placeholder="Search City..." (keyup)='searchCity($event.target.value)'>
-    <datalist id="cities">
-        <option *ngFor="let city of cities" [value]="city">{{city}}</option>
-    </datalist>
-    <div class="result-display">
-      
-      </div>
-
-      <button>Search</button>
+    <input
+      type="text"
+      list="cities"
+      placeholder="Search City..."
+      (keyup)="searchCity($event.target.value)"
+      [(ngModel)]="getImageForCity"
+    />
+    <ng-container *ngIf="!citySelected">
+      <datalist id="cities">
+        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+      </datalist>
+    </ng-container>
+    <button>
+      <a
+        href="https://www.google.com/search?tbm=isch&q={{getImageForCity.length > 3 ? getImageForCity : 'Budapest'}}"
+        target="_blank"
+        >Search</a
+      >
+    </button>
   </div>
-
 </div>

@@ -1,22 +1,17 @@
 import {Injectable} from "@angular/core";
 import { City} from './cities.interface';
 import { DatasourceService} from '../services/datasource.service';
+import { Observable } from 'rxjs';
 
 @Injectable()
-export class CityRepository{
-    private cities = [];
-    private cityNames: string [] = [];
 
+/* this class is used to hide (to some extent) the end points that we are accessing our data from */
 
-    constructor(private dataSource: DatasourceService){
-        dataSource.getDataDump().subscribe(data => {
-          this.cities= data.map(c => c.city);
-           console.log(data)
-        }, e => console.log('Something happened ' + e), () => console.log('Completed') );
-    }
+export class CityRepository {
 
-    getData() {
-        console.log(this.cities);
-        return this.cities.map(c => c.city);
+    constructor(private dataSource: DatasourceService) { }
+
+    getData(): Observable<City[]> {
+        return this.dataSource.getCitites();
     }
 }

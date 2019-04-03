@@ -8,7 +8,6 @@ import {HttpResponse, HttpErrorResponse} from '@angular/common/http';
 export class DatasourceService {
 
   // could be avoided if we really need only the data, I am just using it here becasue I can
-  private readonly cities: City[] = [];
 
  private baseUrl: string;
 
@@ -23,13 +22,12 @@ export class DatasourceService {
         response.subscribe(resp => {
           sessionStorage.setItem('access_token', resp.token);
           response = resp.success;
-          // console.log(response);
         })
         return response;
      })
    }
 
-   getDataDump(): Observable<City[]> {
-     return this.http.get<City[]>(`${this.baseUrl}search`)
+   getCitites(): Observable<City[]> {
+     return this.http.get<City[]>(`${this.baseUrl}search`);
    }
 }

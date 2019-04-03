@@ -1,30 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { CityRepository} from '../../model/city.repository';
-import { City} from '../../model/cities.interface';
+import { Component } from '@angular/core';
+import { CityRepository } from '../../model/city.repository';
 
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.scss']
 })
-export class SearchPageComponent implements OnInit {
+export class SearchPageComponent {
+  public cities: string[] = [];
+  public citySelected = false;
+  public getImageForCity = '';
 
-  cities = [];
-  constructor(private dataSource: CityRepository) { }
 
-  ngOnInit() {
-    // this.cities = this.dataSource.getData().map(city => city.city);
-     console.log(this.dataSource.getData());
+  constructor(private dataSource: CityRepository) {
+   this.subscribeToCitiesData();
+  }
 
-    this.dataSource.getData().forEach(c => {
-      console.log('im getting', c);
+  subscribeToCitiesData(){
+    this.dataSource.getData().subscribe(data => {
+      this.cities = data.map( city => city.city.toLocaleUpperCase());
     })
   }
 
   searchCity(cityName: string) {
-    this.cities.forEach(c => {
-      console.log(c);
-    });
+    if (this.cities.indexOf(cityName.trim().toLocaleUpperCase()) > -1) {
+      this.cities[this.cities.indexOf(cityName)] ? (this.citySelected = true) : (this.citySelected = false);
+    }
   }
-
 }

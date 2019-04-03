@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors());
 app.use(auth);
 app.get('/search', (req, res) => {
-    res.send(cities);
+    res.json(cities);
 })
 
 app.listen(8080, () => { console.log('Server running'); })
