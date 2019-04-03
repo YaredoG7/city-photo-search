@@ -8,10 +8,11 @@ import { NotificationService } from '../services/notification.service';
 import { SearchPageComponent} from './search-page/search-page.component';
 import { MainComponent} from './main.component';
 import { HeaderPannelComponent } from './header-pannel/header-pannel.component';
+import {CityRepository} from '../model/city.repository';
 
 @NgModule({
   imports: [CommonModule, RouterModule , BrowserModule ],
-  providers: [AuthService, DatasourceService, NotificationService],
+  providers: [AuthService, DatasourceService, NotificationService, CityRepository],
   declarations: [SearchPageComponent, MainComponent, HeaderPannelComponent],
   exports: [MainComponent],
 })

@@ -1,3 +1,16 @@
-<p>
-  search-page works!
-</p>
+<div id='search'>
+
+  <div class="input-filed">
+    <!-- <input type="text" placeholder="Search City..."> -->
+    <input type="text" list="cities" placeholder="Search City..." (keyup)='searchCity($event.target.value)'>
+    <datalist id="cities">
+        <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+    </datalist>
+    <div class="result-display">
+      
+      </div>
+
+      <button>Search</button>
+  </div>
+
+</div>

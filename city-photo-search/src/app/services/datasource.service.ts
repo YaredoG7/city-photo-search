@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http"; 
-import {Observable, throwError } from "rxjs"; 
-import {HttpResponse, HttpErrorResponse} from "@angular/common/http";
+import { HttpClient} from '@angular/common/http';
+import { City} from '../model/cities.interface';
+import {Observable, throwError } from 'rxjs';
+import {HttpResponse, HttpErrorResponse} from '@angular/common/http';
 
 @Injectable()
 export class DatasourceService {
+
+  // could be avoided if we really need only the data, I am just using it here becasue I can
+  private readonly cities: City[] = [];
+
  private baseUrl: string;
 
   constructor(private http: HttpClient) {
@@ -22,5 +27,9 @@ export class DatasourceService {
         })
         return response;
      })
+   }
+
+   getDataDump(): Observable<City[]> {
+     return this.http.get<City[]>(`${this.baseUrl}search`)
    }
 }
