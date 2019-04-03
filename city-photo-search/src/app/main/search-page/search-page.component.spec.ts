@@ -1,7 +1,9 @@
 import { fakeAsync, tick, async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SearchPageComponent } from './search-page.component';
 import { CityRepository } from '../../model/city.repository';
-import {Observable,  of } from 'rxjs';
+import { NotificationService } from '../../services/notification.service';
+import { Router } from '@angular/router';
+import { Observable,  of } from 'rxjs';
 import { DebugElement } from '@angular/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
@@ -28,6 +30,10 @@ class MockService {
   }
 }
 
+class MockNotification extends NotificationService {
+  // test on this service could be mocked in here
+}
+
 // f prifix to test only this component
 
 fdescribe('SearchPageComponent', () => {
@@ -40,7 +46,9 @@ fdescribe('SearchPageComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SearchPageComponent ],
-      providers: [{provide: CityRepository, useClass: MockService}], 
+      providers: [{provide: CityRepository, useClass: MockService},
+                  {provide: NotificationService},
+                  {provide: Router, useClass: class { navigate = jasmine.createSpy('navigate'); }}],
       schemas:     [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
@@ -85,7 +93,6 @@ fdescribe('SearchPageComponent', () => {
   input.dispatchEvent(new Event('keydown'));
   tick();
 }
-
 
 it('should check search function returns filtered values', fakeAsync(() => {
   tick();

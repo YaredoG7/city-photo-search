@@ -26,11 +26,14 @@ export class SearchPageComponent {
 
   searchCity(cityName: string) {
     const formatedCityName = cityName.trim().toLocaleUpperCase();
+    let testCity = ''
     this.cities.filter( c => {
       if( c.includes(formatedCityName)){
-        return c; // --> I actually didn't need to use it so, returning this For testing purpose
+        testCity = c; // --> I actually didn't need to use it so, returning this For testing purpose
+                      // and test case shows that this actually functions properly
       }
     })
+    return testCity;
   }
 
   searchGoogleImages() {
