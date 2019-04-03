@@ -1,0 +1,6 @@
+<div class="toggle">
+  <button (click)="toggle()">{{collapse || '+'}}</button>
+</div>
+<app-header-pannel [show]="show"></app-header-pannel>
+<app-search-page></app-search-page>
+<router-outlet></router-outlet>

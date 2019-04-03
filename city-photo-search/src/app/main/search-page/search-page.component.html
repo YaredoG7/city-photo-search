@@ -1,0 +1,28 @@
+<div id="search">
+  <div class="input-filed">
+    <input
+      type="text"
+      list="cities"
+      placeholder="Search City..."
+      (keyup)="searchCity($event.target.value)"
+      [(ngModel)]="getImageForCity"
+    />
+    <ng-container *ngIf="!citySelected">
+      <datalist id="cities">
+        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+      </datalist>
+    </ng-container>
+    <button (click)="searchGoogleImages()">
+      Search
+    </button>
+  </div>
+</div>
+
+<!-- 
+ TESTING CASES
+ - to test the input field passes value to the component I have used keydown event, becasue
+    I could not access NgModel in the test bed configuration
+   
+   (keydown)="getImageForCity=$event.target.value" 
+
+ -->

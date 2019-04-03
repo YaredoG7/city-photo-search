@@ -1,0 +1,4 @@
+<div [@flyInOut]="false" id="notification-content" class="{{ cssClass(notification) }} alert-dismissable">
+  <span class="notification-message">{{notification.message}}</span>
+  <a class="close" (click)="removeNotification()">&times;</a>
+</div>
